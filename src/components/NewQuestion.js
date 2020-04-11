@@ -36,7 +36,7 @@ class NewQuestion extends Component {
     const { optionOneText, optionTwoText } = this.state
 
     return(<div>
-      <h2 align='center'>Compose New Question</h2>
+      <h2 align='center'>Would You Rather?</h2>
       <form className='new-question' onSubmit={this.handleSubmit}>
           <h3 className='center'>Option 1</h3>
         <textarea
