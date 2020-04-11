@@ -8,7 +8,7 @@ export default function users(state={}, action) {
         ...action.questions
       }
     case ADD_QUESTION:
-      return state
+      return state.concat[action.questions]
     default:
       return state
   }

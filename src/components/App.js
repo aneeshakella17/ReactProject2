@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
-
+import LoginList from './LoginList'
 
 class App extends Component {
   componentDidMount() {
@@ -10,14 +10,12 @@ class App extends Component {
   }
 
   render() {
-    console.log("HI")
-    console.log(this.props)
     return (
       <div>
       <LoadingBar />
       {this.props.loading === true
        ? null
-       : <div> {this.props.name} </div>}
+       : <LoginList/>}
       </div>
     )
   }
