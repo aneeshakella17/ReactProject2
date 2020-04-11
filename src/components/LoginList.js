@@ -1,30 +1,39 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 
 class LoginList extends Component {
-  // console.log("HIII")
-  // console.log(this.props)
   render() {
-    console.log("HIII")
-    console.log(this.props.authedUser)
     return (
       <div>
       {this.props.authedUser}
       {this.props.users_arr.
-        map((u) => <LoginBlock user={this.props.users_dic[u]} authedUser={this.props.authedUser}/>)}
+        map((u) => <LoginBlock user={this.props.users_dic[u]} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>)}
     </div>
   )
   }
 }
 
+
 function LoginBlock(props) {
+
+ function handleClick(e) {
+   e.preventDefault();
+   if (props.authedUser === props.user.id){
+    props.dispatch(setAuthedUser(''))
+   } else {
+     props.dispatch(setAuthedUser(props.user.id))
+   }
+ }
+
+
  if (props.authedUser === props.user.id){
    return (
-     <div>
+     <div onClick={(e) => handleClick(e)}>
       <div className='profile shadowfilter'>
         <div className='pic_profile'>
-          <img src={props.user.avatarURL} alt="Profile Pic"/>
+          <img src={props.user.avatarURL} alt="Profile Pick"/>
         </div>
         <div className='pic_name'>
           <h1> {props.user.name} </h1>
@@ -34,12 +43,11 @@ function LoginBlock(props) {
    )
  }
 
-
  return (
-   <div>
+   <div onClick={(e) => handleClick(e)}>
     <div className='profile'>
       <div className='pic_profile'>
-        <img src={props.user.avatarURL} alt="Profile Pic"/>
+        <img src={props.user.avatarURL} alt="Profile Pick"/>
       </div>
       <div className='pic_name'>
         <h1> {props.user.name} </h1>
