@@ -20,32 +20,13 @@ function LoginBlock(props) {
 
  function handleClick(e) {
    e.preventDefault();
-   if (props.authedUser === props.user.id){
-    props.dispatch(setAuthedUser(''))
-   } else {
-     props.dispatch(setAuthedUser(props.user.id))
-   }
- }
-
-
- if (props.authedUser === props.user.id){
-   return (
-     <div onClick={(e) => handleClick(e)}>
-      <div className='profile shadowfilter'>
-        <div className='pic_profile'>
-          <img src={props.user.avatarURL} alt="Profile Pick"/>
-        </div>
-        <div className='pic_name'>
-          <h1> {props.user.name} </h1>
-        </div>
-      </div>
-     </div>
-   )
+   props.dispatch(setAuthedUser(props.user.id))
  }
 
  return (
    <div onClick={(e) => handleClick(e)}>
-    <div className='profile'>
+    <div className={props.authedUser === props.user.id ?
+      'profile shadowfilter' :'profile'}>
       <div className='pic_profile'>
         <img src={props.user.avatarURL} alt="Profile Pick"/>
       </div>
