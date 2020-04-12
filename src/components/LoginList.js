@@ -7,7 +7,6 @@ class LoginList extends Component {
   render() {
     return (
       <div>
-      {this.props.authedUser}
       {this.props.users_arr.
         map((u) => <LoginBlock user={this.props.users_dic[u]} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>)}
     </div>

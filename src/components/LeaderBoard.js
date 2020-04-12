@@ -6,7 +6,6 @@ class LeaderBoard extends Component {
   render() {
     return (
       <div>
-      {this.props.authedUser}
       {this.props.users_arr.
         map((u) => <UserBlock user={this.props.users_dic[u]}  dispatch={this.props.dispatch}/>)}
     </div>
@@ -18,7 +17,7 @@ function UserBlock(props) {
   return (
      <div className='profile'>
        <div className='pic_profile'>
-         <img src={props.user.avatarURL} alt="Profile Pick"/>
+         <img src={props.user.avatarURL} alt="No User Signed In"/>
        </div>
        <div className='pic_name'>
         <h2>  {props.user.name}

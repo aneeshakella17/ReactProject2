@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component , Fragment} from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -16,18 +17,23 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      <LoadingBar />
-      {this.props.loading === true
-       ? null
-       :
-       <div>
-       <Navbar authedUser={this.props.name} avatarURL = {this.props.avatarURL}/>
-       <div>
-        <NewQuestion/>
-        </div>
-        </div>}
-      </div>
+      <Router>
+          <Fragment>
+            <LoadingBar />
+            <div className='container'>
+              <Navbar avatarURL={this.props.avatarURL} authedUser={this.props.name}/>
+              {this.props.loading === true
+                ? null
+                : <div>
+                    <Route path='/' exact component={QuestionPage} />
+                    <Route path='/question/:question_id' component={QuestionProfile} />
+                    <Route path='/add' component={NewQuestion} />
+                    <Route path='/leaderboard' component={LeaderBoard} />
+                    <Route path='/login' component={LoginList} />
+                  </div>}
+            </div>
+          </Fragment>
+        </Router>
     )
   }
 }

@@ -132,7 +132,7 @@ img{
 	float: left;
 }
 
-#nav li a {
+#nav li NavLink {
 		display: block;
 		padding: 8px 15px;
 		text-decoration: none;
@@ -147,3 +147,9 @@ img{
 		font-weight: bold;
 		color: #069;
 		border-right: 1px solid #ccc; }
+
+.container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 10px;
+    }

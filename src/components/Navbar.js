@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { NavLink } from 'react-router-dom'
 
 class Navbar extends React.Component{
     render() {
@@ -9,11 +10,11 @@ class Navbar extends React.Component{
                 <img src={this.props.avatarURL} alt="Profile Pick" height="50" width = ""/>
                 {this.props.authedUser}
                 </li>
-                <li><a href="#">LeaderBord</a></li>
-                <li><a href="#">Question Page</a></li>
+                <li> <NavLink to='/leaderboard' exact activeClassName='active'>Leaderboard</NavLink></li>
+                <li><NavLink to='/' exact activeClassName='active'>Question Page</NavLink></li>
                 <li>  <font size="5" color="pink"> Would You Rather? </font> </li>
-                <li><a href="#">New Question</a></li>
-                <li><a href="#">Login/Sign Out</a></li>
+                <li><NavLink to='/add' exact activeClassName='active'>New Question</NavLink></li>
+                <li><NavLink to='/login' exact activeClassName='active'>Login/Sign Out</NavLink></li>
               </ul>
             </div>
         );
