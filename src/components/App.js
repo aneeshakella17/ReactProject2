@@ -19,7 +19,7 @@ class App extends Component {
       <LoadingBar />
       {this.props.loading === true
        ? null
-       : <QuestionProfile match={{params: {id:"am8ehyc8byjqgar0jgpub9"}}}/>}
+       : <LeaderBoard />}
       </div>
     )
   }

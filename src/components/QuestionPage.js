@@ -32,8 +32,7 @@ function mapStateToProps ({ questions, authedUser }) {
     !questions[q].optionTwo.votes.includes(authedUser)),
     answered: Object.keys(questions).filter((q) => questions[q].optionOne.votes.includes(authedUser) ||
     questions[q].optionTwo.votes.includes(authedUser)),
-    questions: questions,
-    authedUser : authedUser,
+    questions,
   }
 }
 

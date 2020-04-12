@@ -21,7 +21,12 @@ function UserBlock(props) {
          <img src={props.user.avatarURL} alt="Profile Pick"/>
        </div>
        <div className='pic_name'>
-         <h2> {props.user.name} Score: {props.user.questions.length + Object.keys(props.user.answers).length}</h2>
+        <h2>  {props.user.name}
+          <br />
+          Questions Asked: {props.user.questions.length}
+          <br />
+          Questions Answered: {Object.keys(props.user.answers).length}
+          </h2>
        </div>
      </div>
   )
