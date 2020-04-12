@@ -1,5 +1,5 @@
 import React, { Component , Fragment} from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -16,21 +16,29 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <Router>
           <Fragment>
             <LoadingBar />
             <div className='container'>
-              <Navbar avatarURL={this.props.avatarURL} authedUser={this.props.name}/>
+              <Navbar avatarURL={this.props.avatarURL} authedUser={this.props.authedUser}/>
               {this.props.loading === true
                 ? null
-                : <div>
-                    <Route path='/' exact component={QuestionPage} />
-                    <Route path='/question/:question_id' component={QuestionProfile} />
-                    <Route path='/add' component={NewQuestion} />
-                    <Route path='/leaderboard' component={LeaderBoard} />
-                    <Route path='/login' component={LoginList} />
-                  </div>}
+                :
+                <Switch>
+                  { this.props.authedUser === "" ?
+                    (<Route path='/' exact component={LoginList} />) :
+                    (<Fragment>
+                      <Route path='/' exact component={QuestionPage} />
+                      <Route path='/question/:id' component={QuestionProfile} />
+                      <Route path='/add' component={NewQuestion} />
+                      <Route path='/leaderboard' component={LeaderBoard} />
+                      <Route path='/login' component={LoginList} />
+                    </Fragment>)
+                  }
+                    <Route component={ErrorComponent} />
+                </Switch>}
             </div>
           </Fragment>
         </Router>
@@ -38,11 +46,23 @@ class App extends Component {
   }
 }
 
+function ErrorComponent () {
+    return (
+      <div>
+    <h3>404 - Not found</h3>
+    <Link to="/">
+        Return Home
+    </Link>
+    </div>
+  );
+}
+
 function mapStateToProps ({ authedUser, users}) {
   return {
     loading: authedUser === null,
     name: authedUser ? authedUser : null,
-    avatarURL: authedUser ? users[authedUser].avatarURL : null
+    avatarURL: authedUser ? users[authedUser].avatarURL : null,
+    authedUser,
   }
 }
 

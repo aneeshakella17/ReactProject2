@@ -37,8 +37,7 @@ class Unanswered_Question extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault()
-      const { answer } = this.state
-      const { dispatch, id } = this.props
+      const { dispatch } = this.props
       if ( !this.state.isOption1 && !this.state.isOption2 ) {
         alert("Please select a box")
       } else {
@@ -57,8 +56,13 @@ class Unanswered_Question extends Component {
 
           <div className='question_text'>
               <form onSubmit={this.handleSubmit}>
-                <h2> Would You Rather </h2>
-                <div>
+              <h2>
+              <font size="6" color="pink">
+                 Would You Rather?
+               </font>
+              </h2>
+
+              <div>
                   <input type="checkbox" id="option1" onChange = {this.optionOneChange} />
                       <label for="option1"> <font size="5" color="red">
                         {this.props.question.optionOne.text}

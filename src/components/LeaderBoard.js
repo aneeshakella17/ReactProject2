@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
 
 class LeaderBoard extends Component {
   render() {
     return (
       <div>
-      {this.props.users_arr.
-        map((u) => <UserBlock user={this.props.users_dic[u]}  dispatch={this.props.dispatch}/>)}
+      {this.props.users_arr.map((u) =>
+        <UserBlock user={this.props.users_dic[u]}  dispatch={this.props.dispatch}/>)}
     </div>
   )
   }

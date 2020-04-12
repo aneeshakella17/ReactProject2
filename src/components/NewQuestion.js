@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import {Redirect} from 'react-router-dom'
 
 class NewQuestion extends Component {
   state = {
     optionOneText : '',
-    optionTwoText : ''
+    optionTwoText : '',
+    redirectToHome: false
   }
 
   handleChange =  (e) => {
@@ -22,18 +24,24 @@ class NewQuestion extends Component {
     e.preventDefault()
 
     const { optionOneText, optionTwoText } = this.state
-    const { dispatch, id } = this.props
+    const { dispatch } = this.props
     dispatch(handleAddQuestion(optionOneText, optionTwoText))
 
     this.setState(() => ({
       optionOneText: '',
-      optionTwoText: ''
+      optionTwoText: '',
+      redirectToHome: true
     }))
+
   }
 
 
   render(){
     const { optionOneText, optionTwoText } = this.state
+
+    if (this.state.redirectToHome) {
+      return <Redirect to="/" />
+    }
 
     return(<div>
       <h2 align='center'>Would You Rather?</h2>
@@ -60,7 +68,7 @@ class NewQuestion extends Component {
       <button
       className='btn'
       type='submit'
-      disabled={optionOneText === '' && optionTwoText === ''}>
+      disabled={optionOneText === '' || optionTwoText === ''}>
         Submit
     </button>
 
