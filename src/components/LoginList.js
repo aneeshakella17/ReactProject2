@@ -8,7 +8,9 @@ class LoginList extends Component {
   render() {
     return (
       <div>
-      <h2 align="center"> {this.props.authedUser !== "" ? `Current User is ${this.props.authedUser}`  : `Please Select a User`} </h2>
+      <h2 align="center"> {this.props.authedUser !== "" ? `Current User is ${this.props.authedUser}.`  : `Please Select a User`} </h2>
+      <h2 align="center"> {this.props.authedUser !== "" ? `Click on your profile to logout.`  : ``} </h2>
+
       {this.props.users_arr.map((u) =>
         <LoginBlock user={this.props.users_dic[u]} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>)}
     </div>
@@ -31,7 +33,7 @@ function LoginBlock(props) {
         <div className={props.authedUser === props.user.id ?
           'profile shadowfilter' :'profile'}>
           <div className='pic_profile'>
-            <img src={props.user.avatarURL} alt="Profile Pick"/>
+            <img src={props.user.avatarURL} alt="Profile Pic"/>
           </div>
           <div className='pic_name'>
             <h1> {props.user.name} </h1>
