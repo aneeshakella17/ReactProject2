@@ -6,6 +6,7 @@ import LoginList from './LoginList'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
+import QuestionProfile from './QuestionProfile'
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class App extends Component {
       <LoadingBar />
       {this.props.loading === true
        ? null
-       : <QuestionPage/>}
+       : <QuestionProfile match={{params: {id:"am8ehyc8byjqgar0jgpub9"}}}/>}
       </div>
     )
   }
