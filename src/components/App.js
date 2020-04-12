@@ -19,7 +19,7 @@ class App extends Component {
       <LoadingBar />
       {this.props.loading === true
        ? null
-       : <LeaderBoard />}
+       : <NewQuestion/>}
       </div>
     )
   }

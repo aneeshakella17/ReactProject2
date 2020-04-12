@@ -3,21 +3,23 @@ import {showLoading, hideLoading} from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
-export const ANSWER_QUESTION = 'ADD_QUESTION'
+export const ANSWER_QUESTION = 'ANSWER_QUESTION'
 
 
-function addQuestion (question) {
+function addQuestion (question, authedUser) {
   return {
     type: ADD_QUESTION,
     question,
+    authedUser
   }
 }
 
-function answerQuestion (info) {
-  console.log(info)
+function answerQuestion (qid, answer, authedUser) {
   return {
     type: ANSWER_QUESTION,
-    info
+    qid,
+    answer,
+    authedUser,
   }
 }
 
@@ -31,7 +33,7 @@ export function handleAddQuestion (optionOneText, optionTwoText) {
      optionTwoText,
      author: authedUser,
    }).then((question) => {
-     dispatch(answerQuestion(question))
+     dispatch(addQuestion(question, authedUser))
    })
    .then(() => dispatch(hideLoading()))
  }
@@ -45,9 +47,9 @@ export function handleAnswerQuestion(qid, answer) {
    return saveQuestionAnswer({
      qid,
      answer,
-     author: authedUser,
-   }).then((answer) => {
-     dispatch(answerQuestion(answer))
+     authedUser,
+   }).then(() => {
+     dispatch(answerQuestion(qid, answer, authedUser))
    })
    .then(() => dispatch(hideLoading()))
  }

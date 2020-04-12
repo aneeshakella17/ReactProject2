@@ -36,14 +36,15 @@ class Unanswered_Question extends Component {
 
 
   handleSubmit = (e) => {
+      e.preventDefault()
       const { answer } = this.state
       const { dispatch, id } = this.props
       if ( !this.state.isOption1 && !this.state.isOption2 ) {
         alert("Please select a box")
       } else {
         this.state.isOption1 ?
-        dispatch(handleAnswerQuestion(this.props.question.id, this.props.optionOne.text))
-        : dispatch(handleAnswerQuestion(this.props.question.id, this.props.optionTwo.text))
+        dispatch(handleAnswerQuestion(this.props.question.id, "optionOne"))
+        : dispatch(handleAnswerQuestion(this.props.question.id, "optionTwo"))
       }
   }
 

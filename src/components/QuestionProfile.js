@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { handleAnswerQuestion } from '../actions/questions'
 import Answered_Question from './Answered_Question'
 import Unanswered_Question from './Unanswered_Question'
 
@@ -22,7 +21,7 @@ function mapStateToProps ({ questions, authedUser}, props) {
   return {
     id,
     questions,
-    authedUser
+    authedUser,
   }
 }
 
