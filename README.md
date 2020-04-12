@@ -4,6 +4,7 @@ Would You Rather?
 
 Download the starter code and run
 ```
+yarn install
 yarn start
 ```
 
