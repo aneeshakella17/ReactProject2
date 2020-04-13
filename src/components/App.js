@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <Router>
           <Fragment>
@@ -28,7 +27,14 @@ class App extends Component {
                 :
                 <Switch>
                   { this.props.authedUser === "" ?
-                    (<Route path='/' exact component={LoginList} />) :
+                    (
+                    <Fragment>
+                      <Route path='/' exact component={LoginList} />
+                      <Route path='/question/:id' component={LoginList} />
+                      <Route path='/add' component={LoginList} />
+                      <Route path='/leaderboard' component={LoginList} />
+                      <Route path='/login' component={LoginList} />
+                      </Fragment>) :
                     (<Fragment>
                       <Route path='/' exact component={QuestionPage} />
                       <Route path='/question/:id' component={QuestionProfile} />
@@ -37,7 +43,7 @@ class App extends Component {
                       <Route path='/login' component={LoginList} />
                     </Fragment>)
                   }
-                    <Route component={ErrorComponent} />
+                  <Route component={ErrorComponent} />
                 </Switch>}
             </div>
           </Fragment>
