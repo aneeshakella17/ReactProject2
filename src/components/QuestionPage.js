@@ -3,23 +3,46 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 class QuestionPage extends Component {
+
+  state = {
+    seeAnswered : false
+  }
+
+   handleClick = (e) => {
+    e.preventDefault()
+    this.setState({
+      seeAnswered: !this.state.seeAnswered
+    })
+  }
+
   render() {
     return (
+      <div>
+
+      <h2 onClick={this.handleClick} align='center'> <font size="5" color="green"> Click Here to {!this.state.seeAnswered ? "See Answered" : "See Unanswered" } </font> </h2>
+
+      {!this.state.seeAnswered ?
+      (
       <div>
       <h2 align='center'> Unanswered </h2>
       {this.props.unanswered.map((q) =>
         <QuestionBlock key={this.props.questions[q].id}
         question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)
-      }
+      } </div>) : (
+      <div>
       <h2 align='center'> Answered </h2>
       {this.props.answered.map((q) =>
         <QuestionBlock key={this.props.questions[q].id}
         question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)
       }
+      </div>)
+      }
       </div>
   )
   }
 }
+
+
 
 function QuestionBlock(props) {
 
