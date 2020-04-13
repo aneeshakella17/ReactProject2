@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
-import {Link} from 'react-router-dom'
+import { setAuthedUser} from '../actions/authedUser'
 
 
 class LoginList extends Component {
@@ -29,7 +28,6 @@ function LoginBlock(props) {
  return (
 
    <div onClick={(e) => handleClick(e)}>
-      <Link to={"/"} style={{ textDecoration: 'none' }}>
         <div className={props.authedUser === props.user.id ?
           'profile shadowfilter' :'profile'}>
           <div className='pic_profile'>
@@ -39,7 +37,6 @@ function LoginBlock(props) {
             <h1> {props.user.name} </h1>
           </div>
         </div>
-      </Link>
    </div>
  )
 }

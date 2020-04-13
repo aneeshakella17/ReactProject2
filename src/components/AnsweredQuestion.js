@@ -19,15 +19,23 @@ class Answered_Question extends Component {
            <div>
               <font size="5" color="red">
                  {this.props.question.optionOne.text}
-                 : {this.props.question.optionOne.votes.length}
+                 : { (this.props.question.optionTwo.votes.length === 0 &&
+                   this.props.question.optionOne.votes.length === 0)  ? `0%` :
+                   `${this.props.question.optionOne.votes.length * 100/
+                     (this.props.question.optionOne.votes.length +
+                       this.props.question.optionTwo.votes.length)}%` }
               </font>
            </div>
 
 
            <div>
               <font size="5" color="blue">
-               {this.props.question.optionTwo.text}
-               : {this.props.question.optionTwo.votes.length}
+              {this.props.question.optionOne.text}
+              : { (this.props.question.optionTwo.votes.length === 0 &&
+                this.props.question.optionOne.votes.length === 0)  ? `0%` :
+                `${this.props.question.optionTwo.votes.length * 100/
+                  (this.props.question.optionOne.votes.length +
+                    this.props.question.optionTwo.votes.length)}%` }
               </font>
             </div>
 
