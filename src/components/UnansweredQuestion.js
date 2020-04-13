@@ -64,7 +64,7 @@ class Unanswered_Question extends Component {
 
               <div>
                   <input type="checkbox" id="option1" onChange = {this.optionOneChange} />
-                      <label for="option1"> <font size="5" color="red">
+                      <label htmlFor="option1"> <font size="5" color="red">
                         {this.props.question.optionOne.text}
                       </font>
                       </label>
@@ -73,7 +73,7 @@ class Unanswered_Question extends Component {
 
                 <div>
                   <input type="checkbox" id="option2" onChange = {this.optionTwoChange}/>
-                    <label for="option2">  <font size="5" color="blue">
+                    <label htmlFor="option2">  <font size="5" color="blue">
                     {this.props.question.optionTwo.text} </font> </label>
                  </div>
                  <input type="submit" value="Submit"/>

@@ -8,12 +8,15 @@ class QuestionPage extends Component {
       <div>
       <h2 align='center'> Unanswered </h2>
       {this.props.unanswered.map((q) =>
-        <QuestionBlock question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)
+        <QuestionBlock key={this.props.questions[q].id}
+        question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)
       }
       <h2 align='center'> Answered </h2>
       {this.props.answered.map((q) =>
-        <QuestionBlock question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)}
-    </div>
+        <QuestionBlock key={this.props.questions[q].id}
+        question={this.props.questions[q]}  dispatch={this.props.dispatch}/>)
+      }
+      </div>
   )
   }
 }

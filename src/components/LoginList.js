@@ -11,7 +11,9 @@ class LoginList extends Component {
       <h2 align="center"> {this.props.authedUser !== "" ? `Click on your profile to logout.`  : ``} </h2>
 
       {this.props.users_arr.map((u) =>
-        <LoginBlock user={this.props.users_dic[u]} authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>)}
+        <LoginBlock key={this.props.users_dic[u].id}
+        user={this.props.users_dic[u]}
+        authedUser={this.props.authedUser} dispatch={this.props.dispatch}/>)}
     </div>
   )
   }

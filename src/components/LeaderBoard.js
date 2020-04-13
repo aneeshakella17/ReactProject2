@@ -6,7 +6,8 @@ class LeaderBoard extends Component {
     return (
       <div>
       {this.props.users_arr.map((u) =>
-        <UserBlock user={this.props.users_dic[u]}  dispatch={this.props.dispatch}/>)}
+        <UserBlock key={this.props.users_dic[u].id}
+        user={this.props.users_dic[u]}  dispatch={this.props.dispatch}/>)}
     </div>
   )
   }
